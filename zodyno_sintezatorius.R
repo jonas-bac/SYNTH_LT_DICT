@@ -1,10 +1,7 @@
-
-
 ### sintetiniai lietuviu kalbos naujadarai
-### Jonas B. 2017 Dec 20-28
+### Jonas B. 2017 Dec 20-30
 
 library(markovchain)
-#set.seed(2876)  # zhodyno versija
 
 # load a real LT dictionary
 load("~/Dropbox/GIT/SYNTHETIC_DICTIONARIES/lt-LT.dic.RData")
@@ -115,7 +112,7 @@ wrds = unique(wrds)
 # what is common length of real LT words
 hist(nchar(all_words),breaks=100,col="grey")
 round(table(nchar(all_words)) / sum(length(all_words)) *100 ,1)
-quantile(nchar(all_words),probs = c(0.025,0.975))
+quantile(nchar(all_words),probs = c(0.025,0.975)) # ->   5-15
 
 # what is the length of sinthetic LT words
 hist(nchar(wrds),breaks=100,col="grey")
@@ -135,3 +132,21 @@ write(o,file = "~/Biostuff/LT_DICT/designs/SINT_daiktav_-77_method2.txt",append 
 
 # for tracking the uniqueness
 write.table(wrds,"~/Biostuff/LT_DICT/designs/SINT_daiktav_-77_method2.lst",sep="\t",quote=F,row.names = F,col.names = F)
+
+##### export words in batches (1 batch = 1 poster)
+# wrds= read.table("~/Biostuff/LT_DICT/designs/SINT_daiktav_-77_method2.lst",sep="\t",h=F,stringsAsFactors = F)
+# which(wrds == "prekutojimas")
+# o = paste(wrds[14111:(14111+15000)],collapse=", ") # batch 2
+# tmp = wrds[14111:(14111+15000)]
+# which(tmp == "pabrolė")
+# o = paste(wrds[29112:(29112+15000)],collapse=", ") # batch 3
+# tmp = wrds[29112:(29112+15000)]
+# which(tmp=="okamumas")
+# o = paste(wrds[44113:(44113+15000)],collapse=", ") # batch 4
+# tmp = wrds[44113:(44113+15000)]
+# which(tmp=="ruktorundymas")
+# o = paste(wrds[59114:(59114+15000)],collapse=", ") # batch 5
+# tmp = wrds[59114:(59114+15000)]
+# which(tmp=="žilikas")
+# write(o,file = "~/Biostuff/LT_DICT/designs/SINT_daiktav_-77_method2_batch5.txt",append = FALSE)
+
